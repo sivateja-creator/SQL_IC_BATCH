@@ -1,0 +1,16 @@
+show databases;
+create database Food;
+use Food;
+create table menu (s_no int,Dish varchar(30),price int);
+select * from menu;
+insert into menu values (1,"Briyani",250),(2,"SweetPongal",300),(4,"Pulihora",30),(5,"Shawarma",120);
+create table snacks(s_no int,snack varchar(30),cost int);
+select * from snacks;
+insert into snacks values (1,"ice cream",60),(2,"Bingo",10),(4,"Pani Poori",30),(5,"Dessert",150),(6,"samosa",10);
+create table juice (s_no int,beverage varchar(30),amount int);
+select * from juice;
+insert into juice values (1,"Bindhu",20),(2,"Badam Milk",30),(3,"Maaza",20),(5,"Cokacola",50),(6,"Sprite",20);
+select m.Dish,s.snack,s.cost from menu m right outer join snacks s on m.price=s.cost; 
+select m.Dish,s.snack,s.cost from menu m left outer join snacks s on m.price=s.cost;
+select m.Dish,s.snack,j.beverage,s.cost from menu m inner join snacks s on m.price=s.cost join juice j on  m.price=j.amount;
+select m.Dish,s.snack,s.cost,m.price from menu m left outer join snacks s on m.price=s.cost union select m.Dish,s.snack,s.cost,m.price from menu m right outer join snacks s on m.price=s.cost;
